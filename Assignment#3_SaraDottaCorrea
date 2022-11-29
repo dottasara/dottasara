@@ -1,0 +1,62 @@
+import math
+
+#personal data
+print("Sara Dotta Correa")
+print("BIM A+ 2022")
+print("Assignment Programming#3")
+
+#Input
+n=int(input("Type the number of polygon sides"))
+
+#list of the coordinates
+x=[]
+y=[]
+for i in range(n):
+    xi=float(input(f"x[{i+1}]:"))
+    yi=float(input(f"y[{i+1}]:"))
+    x.append(xi)
+    y.append(yi)
+
+# Calculate sum area
+    print()
+a=0
+sx=0
+sy=0
+ix=0
+iy=0
+ixy=0
+for i in range(0,n):
+    a=a+(x[i]+x[i-1])*(y[i]-y[i-1])
+    sx=sx+(x[i]-x[i-1])*(y[i]**2+y[i-1]*y[i]+y[i-1]**2)
+    sy=sy+(y[i]-y[i-1])*(x[i]**2+x[i-1]*x[i]+x[i-1]**2)
+    ix=ix+(x[i]-x[i-1])*(y[i]**3+y[i]**2*y[i-1]+y[i]*y[i-1]**2+y[i-1]**3)
+    iy=iy+(y[i]-y[i-1])*(x[i]**3+x[i]**2*x[i-1]+x[i]*x[i-1]**2+x[i-1]**3)
+    ixy=ixy+(y[i]-y[i-1])*(y[i]*(3*x[i]**2+2*x[i-1]*x[i]+x[i-1]**2)+y[i-1]*(3*x[i-1]**2+2*x[i-1]*x[i]+x[i]**2))
+
+Ax=1/2*a
+Sx=-1/6*sx
+Sy=1/6*sy
+Ix=-1/12*ix
+Iy=1/12*iy
+Ixy=-1/24*ixy
+XT=Sy/Ax
+YT=Sx/Ax
+IXT=Ix-(YT**2*Ax)
+IYT=Iy-(XT**2*Ax)
+IXYT=Ixy+(XT*YT*Ax)
+
+# Geometric features
+print("Geometric features")
+print()
+
+print("Ax=",Ax)
+print("Sx=",Sx)
+print("Sy=",Sy)
+print("Ix=",Ix)
+print("Iy=",Iy)
+print("Ixy=",Ixy)
+print("XT=",XT)
+print("YT=",YT)
+print("IXT=",IXT)
+print("IYT=",IYT)
+print("IXYT=",IXYT)
